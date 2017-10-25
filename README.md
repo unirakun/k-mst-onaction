@@ -1,6 +1,6 @@
 # trampss-mst-onaction
 
-Listen to mobx-state-tree actions and react to them !
+Listen to [mobx-state-tree](https://github.com/mobxjs/mobx-state-tree) actions and react to them !
 > Make your mobx-state-tree store a real tree and not graph
 
 [![CircleCI](https://circleci.com/gh/Trampss/trampss-mst-onaction.svg?style=shield)](https://circleci.com/gh/Trampss/trampss-mst-onaction) [![Coverage Status](https://coveralls.io/repos/github/Trampss/trampss-mst-onaction/badge.svg?branch=master)](https://coveralls.io/github/Trampss/trampss-mst-onaction?branch=master) [![NPM Version](https://badge.fury.io/js/trampss-mst-onaction.svg)](https://www.npmjs.com/package/trampss-mst-onaction)
