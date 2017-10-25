@@ -33,7 +33,7 @@ From graph to a tree:
 TODO
 
 Example: we want a login action to trigger a router action.
-We can do this this way :
+We can do it this way :
 ```es6
 import onAction from 'trampss-mst-onaction'
 import Store from './your-store-model'
