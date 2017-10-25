@@ -1,0 +1,88 @@
+{
+  "name": "trampss-mst-onaction",
+  "version": "0.8.0",
+  "main": "index.js",
+  "repository": "git@github.com:Trampss/trampss-mst-onaction.git",
+  "author": "Fabien JUIF <fabien.juif@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build:core": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.js",
+    "build": "npm-run-all --parallel build:*",
+    "lint:js": "eslint --ext js src",
+    "lint": "npm-run-all --parallel lint:*",
+    "ci": "npm-run-all --parallel lint"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "cross-env": "^5.1.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "npm-run-all": "^4.1.1",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-commonjs": "^8.2.4",
+    "rollup-plugin-uglify": "^2.0.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ],
+    "env": {
+      "build": {
+        "plugins": [
+          "external-helpers"
+        ]
+      },
+      "test": {
+        "presets": [
+          [
+            "es2015",
+            {
+              "modules": false
+            }
+          ]
+        ],
+        "plugins": [
+          "transform-es2015-modules-commonjs"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "airbnb"
+    ],
+    "plugins": [
+      "babel"
+    ],
+    "globals": {
+      "fetch": false
+    },
+    "env": {
+      "browser": true
+    },
+    "rules": {
+      "semi": [
+        2,
+        "never"
+      ]
+    }
+  }
+}
