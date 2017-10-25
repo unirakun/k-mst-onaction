@@ -1,3 +1,5 @@
+import { getPath } from 'mobx-state-tree'
+
 const getAction = (call) => {
   const {
     name,
@@ -6,10 +8,7 @@ const getAction = (call) => {
     args,
   } = call
 
-  const {
-    path,
-  } = context.$treenode
-
+  const path = getPath(context)
   const fullpath = `${path}/${name}`
 
   const action = {
