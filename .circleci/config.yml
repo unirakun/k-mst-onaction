@@ -7,7 +7,7 @@ jobs:
       - run: node --version
       - run: yarn --version
 
-  quality:
+  build:
     docker:
       - image: circleci/node:latest
     steps:
