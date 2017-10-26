@@ -1,6 +1,6 @@
 {
   "name": "trampss-mst-onaction",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "main": "index.js",
   "repository": "git@github.com:Trampss/trampss-mst-onaction.git",
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
@@ -25,6 +25,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
+    "lodash": "^4.17.4",
     "mobx-state-tree": "^1.0.1",
     "npm-run-all": "^4.1.1",
     "rollup": "^0.50.0",
@@ -33,7 +34,8 @@
     "rollup-plugin-uglify": "^2.0.1"
   },
   "peerDependencies": {
-    "mobx-state-tree": "^1.0.1"
+    "mobx-state-tree": "^1.0.1",
+    "lodash": "^4.17.4"
   },
   "babel": {
     "presets": [
