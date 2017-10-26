@@ -28,15 +28,7 @@ const getAction = (call) => {
 export default dispatch => (call, next) => {
   const action = getAction(call)
 
-  if (action) {
-    const runner = dispatch()
-    let step = { done: false }
-
-    while (!step.done) {
-      step = runner.next()
-      if (!step.done) step.value(action, call.tree)
-    }
-  }
+  if (action) dispatch.forEach(runner => runner(action, call.tree))
 
   return next(call)
 }
