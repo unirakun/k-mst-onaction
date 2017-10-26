@@ -1,2 +1,219 @@
-!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("lodash"),require("mobx-state-tree")):"function"==typeof define&&define.amd?define(["exports","lodash","mobx-state-tree"],e):e(t["trampss-mst-onaction"]={},t.lodash,t.mobxStateTree)}(this,function(t,e,n){"use strict";var r=function(t,n){return function(r,o){return!!(e.isString(r)&&r===t.fullpath||e.isFunction(r)&&r(t,n)||e.isRegExp(r)&&t.fullpath.match(r))&&o(t,n)}};r.ended=function(t){return function(e,n){return e.ended?t(e,n):function(){return!1}}}(r);!function(){function t(t){this.value=t}function e(e){function n(o,u){try{var i=e[o](u),a=i.value;a instanceof t?Promise.resolve(a.value).then(function(t){n("next",t)},function(t){n("throw",t)}):r(i.done?"return":"normal",i.value)}catch(t){r("throw",t)}}function r(t,e){switch(t){case"return":o.resolve({value:e,done:!0});break;case"throw":o.reject(e);break;default:o.resolve({value:e,done:!1})}(o=o.next)?n(o.key,o.arg):u=null}var o,u;this._invoke=function(t,e){return new Promise(function(r,i){var a={key:t,arg:e,resolve:r,reject:i,next:null};u?u=u.next=a:(o=u=a,n(t,e))})},"function"!=typeof e.return&&(this.return=void 0)}"function"==typeof Symbol&&Symbol.asyncIterator&&(e.prototype[Symbol.asyncIterator]=function(){return this}),e.prototype.next=function(t){return this._invoke("next",t)},e.prototype.throw=function(t){return this._invoke("throw",t)},e.prototype.return=function(t){return this._invoke("return",t)}}();var o=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t},u=function(t){var e=t.name,r=t.type,u=t.context,i=t.args,a=n.getPath(u),c={fullpath:a+"/"+e,path:a,name:e,args:i};switch(r){case"process_return":return o({},c,{ended:!0});case"action":return c;default:return}};t.default=function(t){return function(e,n){var r=u(e);return r&&t(r,e.tree),n(e)}},t.take=r,Object.defineProperty(t,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('lodash'), require('mobx-state-tree')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'lodash', 'mobx-state-tree'], factory) :
+	(factory((global['trampss-mst-onaction'] = {}),global.lodash,global.mobxStateTree));
+}(this, (function (exports,lodash,mobxStateTree) { 'use strict';
+
+var take = function take(match, callback) {
+  return function (action, tree) {
+    var isMatching = false || lodash.isString(match) && match === action.fullpath || lodash.isFunction(match) && match(action, tree) || lodash.isRegExp(match) && action.fullpath.match(match);
+
+    if (isMatching) return callback(action, tree);
+    return false;
+  };
+};
+
+var ended = function ended(match, callback) {
+  return function (action, tree) {
+    if (action.ended) return take(match, callback)(action, tree);
+    return false;
+  };
+};
+
+take.ended = ended;
+
+// eslint-disable-next-line import/prefer-default-export
+
+var asyncGenerator = function () {
+  function AwaitValue(value) {
+    this.value = value;
+  }
+
+  function AsyncGenerator(gen) {
+    var front, back;
+
+    function send(key, arg) {
+      return new Promise(function (resolve, reject) {
+        var request = {
+          key: key,
+          arg: arg,
+          resolve: resolve,
+          reject: reject,
+          next: null
+        };
+
+        if (back) {
+          back = back.next = request;
+        } else {
+          front = back = request;
+          resume(key, arg);
+        }
+      });
+    }
+
+    function resume(key, arg) {
+      try {
+        var result = gen[key](arg);
+        var value = result.value;
+
+        if (value instanceof AwaitValue) {
+          Promise.resolve(value.value).then(function (arg) {
+            resume("next", arg);
+          }, function (arg) {
+            resume("throw", arg);
+          });
+        } else {
+          settle(result.done ? "return" : "normal", result.value);
+        }
+      } catch (err) {
+        settle("throw", err);
+      }
+    }
+
+    function settle(type, value) {
+      switch (type) {
+        case "return":
+          front.resolve({
+            value: value,
+            done: true
+          });
+          break;
+
+        case "throw":
+          front.reject(value);
+          break;
+
+        default:
+          front.resolve({
+            value: value,
+            done: false
+          });
+          break;
+      }
+
+      front = front.next;
+
+      if (front) {
+        resume(front.key, front.arg);
+      } else {
+        back = null;
+      }
+    }
+
+    this._invoke = send;
+
+    if (typeof gen.return !== "function") {
+      this.return = undefined;
+    }
+  }
+
+  if (typeof Symbol === "function" && Symbol.asyncIterator) {
+    AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+      return this;
+    };
+  }
+
+  AsyncGenerator.prototype.next = function (arg) {
+    return this._invoke("next", arg);
+  };
+
+  AsyncGenerator.prototype.throw = function (arg) {
+    return this._invoke("throw", arg);
+  };
+
+  AsyncGenerator.prototype.return = function (arg) {
+    return this._invoke("return", arg);
+  };
+
+  return {
+    wrap: function (fn) {
+      return function () {
+        return new AsyncGenerator(fn.apply(this, arguments));
+      };
+    },
+    await: function (value) {
+      return new AwaitValue(value);
+    }
+  };
+}();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var getAction = function getAction(call) {
+  var name = call.name,
+      type = call.type,
+      context = call.context,
+      args = call.args;
+
+
+  var path = mobxStateTree.getPath(context);
+  var fullpath = path + '/' + name;
+
+  var action = {
+    fullpath: fullpath,
+    path: path,
+    name: name,
+    args: args
+  };
+
+  switch (type) {
+    case 'process_return':
+      return _extends({}, action, { ended: true });
+    case 'action':
+      return action;
+    default:
+      return undefined;
+  }
+};
+
+var middleware = (function (dispatch) {
+  return function (call, next) {
+    var action = getAction(call);
+
+    if (action) {
+      var runner = dispatch();
+      var step = { done: false };
+
+      while (!step.done) {
+        step = runner.next();
+        if (!step.done) step.value(action, call.tree);
+      }
+    }
+
+    return next(call);
+  };
+});
+
+exports['default'] = middleware;
+exports.take = take;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=index.js.map

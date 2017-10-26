@@ -28,7 +28,15 @@ const getAction = (call) => {
 export default dispatch => (call, next) => {
   const action = getAction(call)
 
-  if (action) dispatch(action, call.tree)
+  if (action) {
+    const runner = dispatch()
+    let step = { done: false }
+
+    while (!step.done) {
+      step = runner.next()
+      if (!step.done) step.value(action, call.tree)
+    }
+  }
 
   return next(call)
 }

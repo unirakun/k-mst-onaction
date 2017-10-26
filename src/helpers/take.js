@@ -1,6 +1,6 @@
 import { isRegExp, isString, isFunction } from 'lodash'
 
-const take = (action, tree) => (match, callback) => {
+const take = (match, callback) => (action, tree) => {
   const isMatching = false
     || (isString(match) && match === action.fullpath)
     || (isFunction(match) && match(action, tree))
@@ -10,11 +10,11 @@ const take = (action, tree) => (match, callback) => {
   return false
 }
 
-const ended = takeImpl => (action, tree) => {
-  if (action.ended) return takeImpl(action, tree)
-  return () => false
+const ended = (match, callback) => (action, tree) => {
+  if (action.ended) return take(match, callback)(action, tree)
+  return false
 }
 
-take.ended = ended(take)
+take.ended = ended
 
 export default take
