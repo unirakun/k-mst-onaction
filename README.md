@@ -125,7 +125,7 @@ const dispatch = (action, tree) => {
 addMiddleware(store, onAction(dispatch))
 ```
 
-### `dispath` is a function that returns an array - impure take
+### `dispatch` is a function that returns an array - impure take
 ```es6
 import { addMiddleware } from 'mobx-state-tree'
 import onAction, { take } from 'trampss-mst-onaction'
@@ -140,7 +140,7 @@ const dispatch = (action, tree) => [
 addMiddleware(store, onAction(dispatch))
 ```
 
-### `dispath` is a function that returns an array - **pure** take
+### `dispatch` is a function that returns an array - **pure** take
 ```es6
 import { addMiddleware } from 'mobx-state-tree'
 import onAction, { take } from 'trampss-mst-onaction'
