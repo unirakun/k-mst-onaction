@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`array runner should run all function from the array 1`] = `
+Array [
+  Array [
+    Object {
+      "ho": "an action",
+    },
+    Object {
+      "this": "is tree !",
+    },
+  ],
+]
+`;
+
+exports[`array runner should run all function from the array 2`] = `
+Array [
+  Array [
+    Object {
+      "ho": "an action",
+    },
+    Object {
+      "this": "is tree !",
+    },
+  ],
+]
+`;

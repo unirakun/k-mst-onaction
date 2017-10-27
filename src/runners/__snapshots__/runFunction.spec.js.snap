@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`function runner should run a function that returns an array 1`] = `
+Array [
+  Array [
+    Object {
+      "ho": "i am an action",
+    },
+    Object {
+      "this": "is the tree :)",
+    },
+  ],
+]
+`;
+
+exports[`function runner should run a function that returns an array 2`] = `
+Array [
+  Array [
+    Object {
+      "ho": "i am an action",
+    },
+    Object {
+      "this": "is the tree :)",
+    },
+  ],
+]
+`;
+
+exports[`function runner should run a function that returns an array 3`] = `
+Array [
+  Array [
+    Object {
+      "ho": "i am an action",
+    },
+    Object {
+      "this": "is the tree :)",
+    },
+  ],
+]
+`;
+
+exports[`function runner should run a simple function 1`] = `
+Array [
+  Array [
+    Object {
+      "ho": "i am an action",
+    },
+    Object {
+      "this": "is the tree :)",
+    },
+  ],
+]
+`;
+
+exports[`function runner should run a simple function that returns nothing 1`] = `
+Array [
+  Array [
+    Object {
+      "ho": "i am an action",
+    },
+    Object {
+      "this": "is the tree :)",
+    },
+  ],
+]
+`;
