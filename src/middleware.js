@@ -1,34 +1,27 @@
-import { getPath } from 'mobx-state-tree'
+import { isArray, isFunction } from 'lodash'
+import { isGenerator } from './utils'
+import { runArray, runFunction, runGenerator } from './runners'
+import getAction from './getAction'
 
-const getAction = (call) => {
-  const {
-    name,
-    type,
-    context,
-    args,
-  } = call
-
-  const path = getPath(context)
-  const fullpath = `${path}/${name}`
-
-  const action = {
-    fullpath,
-    path,
-    name,
-    args,
+const run = dispatch => (action, tree) => {
+  if (isFunction(dispatch)) {
+    if (isGenerator(dispatch)) return runGenerator(dispatch, action, tree)
+    return runFunction(dispatch, action, tree)
   }
 
-  switch (type) {
-    case 'process_return': return { ...action, ended: true }
-    case 'action': return action
-    default: return undefined
-  }
+  if (isArray(dispatch)) return runArray(dispatch, action, tree)
+
+  throw new Error('[trampss-mst-onaction] unknow dispatch type')
 }
 
-export default dispatch => (call, next) => {
-  const action = getAction(call)
+export default (dispatch) => {
+  const runDispatch = run(dispatch)
 
-  if (action) dispatch.forEach(runner => runner(action, call.tree))
+  return (call, next) => {
+    const action = getAction(call)
 
-  return next(call)
+    if (action) runDispatch(action, call.tree)
+
+    return next(call)
+  }
 }
