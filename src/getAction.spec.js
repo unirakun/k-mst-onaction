@@ -31,7 +31,7 @@ describe('getAction maper', () => {
   it('should map an asynchronous action that ends [mst<=1.0.0]', () => {
     const call = {
       name: 'actionName',
-      type: 'process_return', // MST version <= 1.0.0
+      type: 'process_return', // MST version <= 1.0
       context: { $treenode: { path: '/this/is/a/path' } },
       args: ['first', { second: 'argument' }],
     }
@@ -45,7 +45,7 @@ describe('getAction maper', () => {
   it('should map an asynchronous action that ends [mst>1.0.0]', () => {
     const call = {
       name: 'actionName',
-      type: 'flow_return', // MST version > 1.0.0
+      type: 'flow_return', // MST version > 1.0
       context: { $treenode: { path: '/this/is/a/path' } },
       args: ['first', { second: 'argument' }],
     }
