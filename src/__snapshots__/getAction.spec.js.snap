@@ -14,7 +14,22 @@ Object {
 }
 `;
 
-exports[`getAction maper should map an asynchronous action that ends 1`] = `
+exports[`getAction maper should map an asynchronous action that ends [mst<=1.0.0] 1`] = `
+Object {
+  "args": Array [
+    "first",
+    Object {
+      "second": "argument",
+    },
+  ],
+  "ended": true,
+  "fullpath": "/this/is/a/path/actionName",
+  "name": "actionName",
+  "path": "/this/is/a/path",
+}
+`;
+
+exports[`getAction maper should map an asynchronous action that ends [mst>1.0.0] 1`] = `
 Object {
   "args": Array [
     "first",

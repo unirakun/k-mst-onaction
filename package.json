@@ -1,6 +1,6 @@
 {
   "name": "trampss-mst-onaction",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "main": "index.js",
   "repository": "git@github.com:Trampss/trampss-mst-onaction.git",
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
@@ -40,7 +40,7 @@
   },
   "peerDependencies": {
     "lodash": "^4.17.4",
-    "mobx-state-tree": "^1.0.1"
+    "mobx-state-tree": "^1.0.0"
   },
   "babel": {
     "presets": [

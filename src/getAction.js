@@ -19,7 +19,8 @@ export default (call) => {
   }
 
   switch (type) {
-    case 'process_return': return { ...action, ended: true }
+    case 'process_return': // mobx-state-tree v1.0 and older
+    case 'flow_return': return { ...action, ended: true }
     case 'action': return action
     default: return undefined
   }
