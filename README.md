@@ -47,7 +47,7 @@ What we want it to pass from an actions dependencies graph to a tree :
   1. Voila !
 
 ### Middleware API
-As you see on the [First try](#firsttry) what you have to do is to give a `dispatch` function to the `onAction` middleware.
+As you see on the [First try](#first-try) what you have to do is to give a `dispatch` function to the `onAction` middleware.
 
 The `dispatch` function can be from two types :
  - **an array**, in the case, each function of the array will be called
@@ -56,7 +56,7 @@ The `dispatch` function can be from two types :
 
 You can use the `take` helper to avoid dealing with the API and have a cleaner code.
 
-From [First try](#firsttry) example code with `take` helper :
+From [First try](#first-try) example code with `take` helper :
 ```es6
 import { addMiddleware } from 'mobx-state-tree'
 import onAction from 'trampss-mst-onaction'
