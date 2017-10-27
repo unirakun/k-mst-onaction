@@ -6,6 +6,7 @@
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "test": "jest",
     "build:core": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.js",
     "build": "npm-run-all --parallel build:*",
     "lint:js": "eslint --ext js src",
