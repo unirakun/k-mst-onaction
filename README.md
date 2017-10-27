@@ -53,3 +53,134 @@ const dispatch = (action, tree) => {
 // attach the onAction middleware from trampss-mst-onaction
 addMiddleware(store, onAction(dispatch))
 ```
+
+
+
+
+
+
+
+```es6
+export default () => {
+  const store = Store.create({})
+
+  const dispatch = (action, tree) => {
+    const { fullpath, ended, args } = action
+
+    if (fullpath === '/auth/login' && ended) {
+      tree.ui.router.goToList()
+    } else if (fullpath === '/ui/workflow/setSelected' && args.length && args[0].code !== 'search') {
+      tree.prospects.setFulltext('')
+    } else if (fullpath === '/prospects/setFulltext') {
+      if (args.length && args[0] !== '') {
+        let step = tree.ui.workflow.steps.find(s => s.code === 'search')
+        if (!step) step = tree.ui.workflow.addStep({ code: 'search', name: 'Rechercher', volatile: true })
+        tree.ui.workflow.setSelected(step)
+      }
+    } else if (fullpath === '/prospects/edit/remove' && ended) {
+      tree.prospects.removeById(tree.prospects.edit.prospect.id)
+      tree.ui.router.goToList()
+    } else if (fullpath === '/auth/logout') {
+      tree.ui.router.goToAuthentication()
+    } else if (ended && (fullpath.match(/\/prospects\/data\/.*\/save/) || ['/prospects/load', '/prospects/create'].includes(fullpath))) {
+      tree.ui.workflow.steps.forEach((step) => {
+        step.setNumber(tree.prospects.data.filter(p => p.status === step.code).length)
+      })
+    } else if (fullpath === '/ui/router/go' && args.length && args[0] !== 'authentication') {
+      if (!tree.auth.logged) {
+        tree.ui.router.goToAuthentication()
+      }
+    }
+  }
+  ```
+
+
+```es6
+const dispatch = (action, tree) => [
+    take.ended('/auth/login', () => { tree.ui.router.goToList() }),
+
+    take(
+      ({ fullpath, args }) => fullpath === '/ui/workflow/setSelected' && args.length && args[0].code !== 'search',
+      () => { tree.prospects.setFulltext('') },
+    ),
+
+    take(
+      ({ fullpath, args }) => fullpath === '/prospects/setFulltext' && args.length && args[0] !== '',
+      () => {
+        let step = tree.ui.workflow.steps.find(s => s.code === 'search')
+        if (!step) step = tree.ui.workflow.addStep({ code: 'search', name: 'Rechercher', volatile: true })
+        tree.ui.workflow.setSelected(step)
+      },
+    ),
+
+    take.ended('/prospects/edit/remove', () => {
+      tree.prospects.removeById(tree.prospects.edit.prospect.id)
+      tree.ui.router.goToList()
+    }),
+
+    take('/auth/logout', () => { tree.ui.router.goToAuthentication() }),
+
+    take.ended(
+      ({ fullpath }) => fullpath.match(/\/prospects\/data\/.*\/save/) || ['/prospects/load', '/prospects/create'].includes(fullpath),
+      () => {
+        tree.ui.workflow.steps.forEach((step) => {
+          step.setNumber(tree.prospects.data.filter(p => p.status === step.code).length)
+        })
+      },
+    ),
+
+    take(
+      ({ fullpath, args }) => fullpath === '/ui/router/go' && args.length && args[0] !== 'authentication',
+      () => {
+        if (!tree.auth.logged) {
+          tree.ui.router.goToAuthentication()
+        }
+      },
+    ),
+  ]
+```
+
+```es6
+const dispatch = [
+    take.ended('/auth/login', (action, tree) => { tree.ui.router.goToList() }),
+
+    take(
+      ({ fullpath, args }) => fullpath === '/ui/workflow/setSelected' && args.length && args[0].code !== 'search',
+      (action, tree) => { tree.prospects.setFulltext('') },
+    ),
+
+    take(
+      ({ fullpath, args }) => fullpath === '/prospects/setFulltext' && args.length && args[0] !== '',
+      (action, tree) => {
+        let step = tree.ui.workflow.steps.find(s => s.code === 'search')
+        if (!step) step = tree.ui.workflow.addStep({ code: 'search', name: 'Rechercher', volatile: true })
+        tree.ui.workflow.setSelected(step)
+      },
+    ),
+
+    take.ended('/prospects/edit/remove', (action, tree) => {
+      tree.prospects.removeById(tree.prospects.edit.prospect.id)
+      tree.ui.router.goToList()
+    }),
+
+    take('/auth/logout', (action, tree) => { tree.ui.router.goToAuthentication() }),
+
+    take.ended(
+      ({ fullpath }) => fullpath.match(/\/prospects\/data\/.*\/save/) || ['/prospects/load', '/prospects/create'].includes(fullpath),
+      (action, tree) => {
+        tree.ui.workflow.steps.forEach((step) => {
+          step.setNumber(tree.prospects.data.filter(p => p.status === step.code).length)
+        })
+      },
+    ),
+
+    take(
+      ({ fullpath, args }) => fullpath === '/ui/router/go' && args.length && args[0] !== 'authentication',
+      (action, tree) => {
+        if (!tree.auth.logged) {
+          tree.ui.router.goToAuthentication()
+        }
+      },
+    ),
+  ]
+  ```

@@ -1,14 +1,9 @@
 import { isArray, isFunction } from 'lodash'
-import { isGenerator } from './utils'
-import { runArray, runFunction, runGenerator } from './runners'
+import { runArray, runFunction } from './runners'
 import getAction from './getAction'
 
 const run = dispatch => (action, tree) => {
-  if (isFunction(dispatch)) {
-    if (isGenerator(dispatch)) return runGenerator(dispatch, action, tree)
-    return runFunction(dispatch, action, tree)
-  }
-
+  if (isFunction(dispatch)) return runFunction(dispatch, action, tree)
   if (isArray(dispatch)) return runArray(dispatch, action, tree)
 
   throw new Error('[trampss-mst-onaction] unknow dispatch type')
