@@ -2600,6 +2600,10 @@ mobx-state-tree@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/mobx-state-tree/-/mobx-state-tree-1.0.1.tgz#7b42616e5947e36d4c3413b404c2800b79c4305b"
 
+mobx@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-3.3.1.tgz#c38fc1a287a0dda3f5d4b85efe1137fedd9dcdf0"
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
