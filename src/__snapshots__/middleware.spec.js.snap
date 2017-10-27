@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`middleware should call runArray 1`] = `"i am next"`;
+
+exports[`middleware should call runArray 2`] = `
+Array [
+  Array [
+    Array [],
+    Object {
+      "call": Object {
+        "tree": Object {
+          "this": "is tree",
+        },
+        "type": "action",
+      },
+      "mocked": "getAction",
+    },
+    Object {
+      "this": "is tree",
+    },
+  ],
+]
+`;
+
+exports[`middleware should call runArray 3`] = `Array []`;
+
+exports[`middleware should call runFunction 1`] = `"i am next"`;
+
+exports[`middleware should call runFunction 2`] = `Array []`;
+
+exports[`middleware should call runFunction 3`] = `
+Array [
+  Array [
+    [Function],
+    Object {
+      "call": Object {
+        "tree": Object {
+          "this": "is tree",
+        },
+        "type": "action",
+      },
+      "mocked": "getAction",
+    },
+    Object {
+      "this": "is tree",
+    },
+  ],
+]
+`;
+
+exports[`middleware should not call runner (no action) 1`] = `"i am next"`;
+
+exports[`middleware should not call runner (no action) 2`] = `Array []`;
+
+exports[`middleware should not call runner (no action) 3`] = `Array []`;
+
+exports[`middleware should throw an error (unknown dispatch type) 1`] = `[Error: [trampss-mst-onaction] unknow dispatch type]`;
