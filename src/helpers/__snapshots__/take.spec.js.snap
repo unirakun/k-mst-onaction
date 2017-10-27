@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`take helper ended version should match -ended: true- 1`] = `"callback returns !"`;
+
+exports[`take helper ended version should match -ended: true- 2`] = `
+Array [
+  Array [
+    Object {
+      "ended": true,
+      "fullpath": "match please",
+    },
+    Object {
+      "this": "is tree :)",
+    },
+  ],
+]
+`;
+
+exports[`take helper ended version should not match -ended: false- 1`] = `false`;
+
+exports[`take helper ended version should not match -ended: false- 2`] = `Array []`;
+
+exports[`take helper simple version should **not** match -function- 1`] = `false`;
+
+exports[`take helper simple version should **not** match -regexp- 1`] = `false`;
+
+exports[`take helper simple version should **not** match -string- 1`] = `false`;
+
+exports[`take helper simple version should **not** match -string- 2`] = `Array []`;
+
+exports[`take helper simple version should match -function- 1`] = `"match !"`;
+
+exports[`take helper simple version should match -regexp- 1`] = `"match !"`;
+
+exports[`take helper simple version should match -string- 1`] = `"callback returns"`;
+
+exports[`take helper simple version should match -string- 2`] = `
+Array [
+  Array [
+    Object {
+      "fullpath": "/some/full/path",
+    },
+    Object {
+      "this": "is tree",
+    },
+  ],
+]
+`;
+
+exports[`take helper simple version should not match (wrong type) 1`] = `false`;
+
+exports[`take helper simple version should not match (wrong type) 2`] = `Array []`;
