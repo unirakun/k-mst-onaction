@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getAction maper should map a simple mobx-state-tree action 1`] = `
+Object {
+  "args": Array [
+    "first",
+    Object {
+      "second": "argument",
+    },
+  ],
+  "fullpath": "/this/is/a/path/actionName",
+  "name": "actionName",
+  "path": "/this/is/a/path",
+}
+`;
+
+exports[`getAction maper should map an asynchronous action that ends 1`] = `
+Object {
+  "args": Array [
+    "first",
+    Object {
+      "second": "argument",
+    },
+  ],
+  "ended": true,
+  "fullpath": "/this/is/a/path/actionName",
+  "name": "actionName",
+  "path": "/this/is/a/path",
+}
+`;
+
+exports[`getAction maper should map an undefined type 1`] = `undefined`;
