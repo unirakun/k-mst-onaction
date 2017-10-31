@@ -1,5 +1,7 @@
 # trampss-mst-onaction
 
+🚧 🚧 **RIGHT NOW THIS MIDDLEWARE DOESN'T WORK WITH AN UGLIFY VERSION OF YOUR MOBX-STATE-TREE STORE, LOOK A THIS MOBX_STATE_TREE ISSUE FOR MORE INFORMATIONS: [Issue #492](https://github.com/mobxjs/mobx-state-tree/issues/492#issuecomment-340699260)** 🚧 🚧 
+
 Listen to [mobx-state-tree](https://github.com/mobxjs/mobx-state-tree) actions and react to them !
 > Make your mobx-state-tree store a real tree, not a graph
 
