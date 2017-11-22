@@ -35,6 +35,15 @@ describe('take helper', () => {
     // from now tests are simpler because both returns type are tested
     // ==========
 
+    it('should match -regexp as string-', () => {
+      const res = take('/user/:id/setName', () => 'match !')({ fullpath: '/user/302/setName' }, {})
+      expect(res).toMatchSnapshot()
+    })
+    it('should **not** match -regexp as string-', () => {
+      const res = take('/user/id/setName', () => 'match !')({ fullpath: '/user/302/setName' }, {})
+      expect(res).toMatchSnapshot()
+    })
+
     it('should match -function-', () => {
       const res = take(() => true, () => 'match !')({}, {})
       expect(res).toMatchSnapshot()

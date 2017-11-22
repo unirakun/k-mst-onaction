@@ -1,10 +1,20 @@
 import { isRegExp, isString, isFunction } from 'lodash'
+import pathToRegexp from 'path-to-regexp'
 
 const take = (match, callback) => (action, tree) => {
   const isMatching = false
-    || (isString(match) && match === action.fullpath)
-    || (isFunction(match) && match(action, tree))
-    || (isRegExp(match) && action.fullpath.match(match))
+    || (
+      isString(match) &&
+      pathToRegexp(match, [], { sensitive: true }).exec(action.fullpath) !== null
+    )
+    || (
+      isFunction(match) &&
+      match(action, tree)
+    )
+    || (
+      isRegExp(match) &&
+      action.fullpath.match(match)
+    )
 
   if (isMatching) return callback(action, tree)
   return false
