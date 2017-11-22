@@ -1,12 +1,12 @@
-# trampss-mst-onaction
+# k-mst-onaction
 
-🚧 🚧 **RIGHT NOW THIS MIDDLEWARE DOESN'T WORK WITH AN UGLIFY VERSION OF YOUR MOBX-STATE-TREE STORE, LOOK A THIS MOBX_STATE_TREE ISSUE FOR MORE INFORMATIONS: [Issue #492](https://github.com/mobxjs/mobx-state-tree/issues/492#issuecomment-340699260)** 🚧 🚧 
+🚧 🚧 **RIGHT NOW THIS MIDDLEWARE DOESN'T WORK WITH AN UGLIFY VERSION OF YOUR MOBX-STATE-TREE STORE, LOOK A THIS MOBX_STATE_TREE ISSUE FOR MORE INFORMATIONS: [Issue #492](https://github.com/mobxjs/mobx-state-tree/issues/492#issuecomment-340699260)** 🚧 🚧
 
 Listen to [mobx-state-tree](https://github.com/mobxjs/mobx-state-tree) actions and react to them !
 > Make your mobx-state-tree store a real tree, not a graph
 
-[![CircleCI](https://circleci.com/gh/Trampss/trampss-mst-onaction.svg?style=shield)](https://circleci.com/gh/Trampss/trampss-mst-onaction) [![Coverage Status](https://coveralls.io/repos/github/Trampss/trampss-mst-onaction/badge.svg?branch=master)](https://coveralls.io/github/Trampss/trampss-mst-onaction?branch=master) [![NPM Version](https://badge.fury.io/js/trampss-mst-onaction.svg)](https://www.npmjs.com/package/trampss-mst-onaction)
-[![Size](http://img.badgesize.io/Trampss/trampss-mst-onaction/master/index.js.svg)]()
+[![CircleCI](https://circleci.com/gh/alakarteio/k-mst-onaction.svg?style=shield)](https://circleci.com/gh/alakarteio/k-mst-onaction) [![Coverage Status](https://coveralls.io/repos/github/alakarteio/k-mst-onaction/badge.svg?branch=master)](https://coveralls.io/github/alakarteio/k-mst-onaction?branch=master) [![NPM Version](https://badge.fury.io/js/k-mst-onaction.svg)](https://www.npmjs.com/package/k-mst-onaction)
+[![Size](http://img.badgesize.io/alakarteio/k-mst-onaction/master/index.js.svg)]()
 
 ## Contents
  - [Purpose](#purpose)
@@ -29,12 +29,12 @@ What we want is to pass from an actions dependencies graph to a tree:
 </center>
 
 ## Installation
- - `yarn add trampss-mst-onaction`
- - `npm i trampss-mst-onaction`
+ - `yarn add k-mst-onaction`
+ - `npm i k-mst-onaction`
 
 ## API
 ### First try
-  1. Import the middleware from **trampss-mst-onaction**: `import onAction from 'trampss-mst-onaction'`
+  1. Import the middleware from **k-mst-onaction**: `import onAction from 'k-mst-onaction'`
   2. Write your reaction, the easiest way is to write it as a function:
   ```es6
   const dispatch = (action, tree) => {
@@ -61,7 +61,7 @@ You can use the `take` helper to avoid dealing with the API and have a cleaner c
 From [First try](#first-try) example code with `take` helper:
 ```es6
 import { addMiddleware } from 'mobx-state-tree'
-import onAction from 'trampss-mst-onaction'
+import onAction from 'k-mst-onaction'
 import Store from './your-store-model'
 
 // instanciate the store
@@ -72,7 +72,7 @@ const dispatch = (action, tree) => [
   take.ended('/auth/login', () => { tree.ui.router.goToList() })
 ]
 
-// attach the onAction middleware from trampss-mst-onaction
+// attach the onAction middleware from k-mst-onaction
 addMiddleware(store, onAction(dispatch))
 ```
 Note that:
@@ -111,7 +111,7 @@ We will write 4 ways of doing a router redirection after our login is successful
 ### `dispatch` is a function (that doesn't return an array)
 ```es6
 import { addMiddleware } from 'mobx-state-tree'
-import onAction from 'trampss-mst-onaction'
+import onAction from 'k-mst-onaction'
 import Store from './your-store-model'
 
 const store = Store.create({})
@@ -130,7 +130,7 @@ addMiddleware(store, onAction(dispatch))
 ### `dispatch` is a function that returns an array - impure take
 ```es6
 import { addMiddleware } from 'mobx-state-tree'
-import onAction, { take } from 'trampss-mst-onaction'
+import onAction, { take } from 'k-mst-onaction'
 import Store from './your-store-model'
 
 const store = Store.create({})
@@ -145,7 +145,7 @@ addMiddleware(store, onAction(dispatch))
 ### `dispatch` is a function that returns an array - **pure** take
 ```es6
 import { addMiddleware } from 'mobx-state-tree'
-import onAction, { take } from 'trampss-mst-onaction'
+import onAction, { take } from 'k-mst-onaction'
 import Store from './your-store-model'
 
 const store = Store.create({})
@@ -162,7 +162,7 @@ addMiddleware(store, onAction(dispatch))
 
 ```es6
 import { addMiddleware } from 'mobx-state-tree'
-import onAction, { take } from 'trampss-mst-onaction'
+import onAction, { take } from 'k-mst-onaction'
 import Store from './your-store-model'
 
 const store = Store.create({})
