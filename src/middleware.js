@@ -6,7 +6,7 @@ const run = dispatch => (action, tree) => {
   if (isFunction(dispatch)) return runFunction(dispatch, action, tree)
   if (isArray(dispatch)) return runArray(dispatch, action, tree)
 
-  throw new Error('[trampss-mst-onaction] unknow dispatch type')
+  throw new Error('[k-mst-onaction] unknow dispatch type')
 }
 
 export default (dispatch) => {

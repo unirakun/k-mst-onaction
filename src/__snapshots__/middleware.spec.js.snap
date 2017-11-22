@@ -54,4 +54,4 @@ exports[`middleware should not call runner (no action) 2`] = `Array []`;
 
 exports[`middleware should not call runner (no action) 3`] = `Array []`;
 
-exports[`middleware should throw an error (unknown dispatch type) 1`] = `[Error: [trampss-mst-onaction] unknow dispatch type]`;
+exports[`middleware should throw an error (unknown dispatch type) 1`] = `[Error: [k-mst-onaction] unknow dispatch type]`;
