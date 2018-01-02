@@ -85,8 +85,8 @@ Note that:
 `take` is an helper that takes two arguments (`take(test, reaction)`):
  - first argument is the `test`, it can be
    * **a string:** this string will be converted to a regular expression then the match is tested with fullpath
-     - `'/user/add'` will work against `'/user/add/`
-     - `'/user/:id/setName` will work against `'/user/12/setName'`
+     - `'/user/add'` will work against `'/user/add/'`
+     - `'/user/:id/setName'` will work against `'/user/12/setName'`
    * **a regular expression:** then the fullpath is tested over the regular expression
    * **a function:** the function is called and should return true to have the reaction called
      - the function takes two arguments: the `action` to test and the current `tree` (your store instance)
