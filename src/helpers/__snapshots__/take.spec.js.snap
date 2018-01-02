@@ -22,6 +22,8 @@ exports[`take helper ended version should not match -ended: false- 2`] = `Array 
 
 exports[`take helper simple version should **not** match -function- 1`] = `false`;
 
+exports[`take helper simple version should **not** match -regexp as string- 1`] = `false`;
+
 exports[`take helper simple version should **not** match -regexp- 1`] = `false`;
 
 exports[`take helper simple version should **not** match -string- 1`] = `false`;
@@ -29,6 +31,8 @@ exports[`take helper simple version should **not** match -string- 1`] = `false`;
 exports[`take helper simple version should **not** match -string- 2`] = `Array []`;
 
 exports[`take helper simple version should match -function- 1`] = `"match !"`;
+
+exports[`take helper simple version should match -regexp as string- 1`] = `"match !"`;
 
 exports[`take helper simple version should match -regexp- 1`] = `"match !"`;
 
