@@ -5,8 +5,8 @@
 Listen to [mobx-state-tree](https://github.com/mobxjs/mobx-state-tree) actions and react to them !
 > Make your mobx-state-tree store a real tree, not a graph
 
-[![CircleCI](https://circleci.com/gh/alakarteio/k-mst-onaction.svg?style=shield)](https://circleci.com/gh/alakarteio/k-mst-onaction) [![Coverage Status](https://coveralls.io/repos/github/alakarteio/k-mst-onaction/badge.svg?branch=master)](https://coveralls.io/github/alakarteio/k-mst-onaction?branch=master) [![NPM Version](https://badge.fury.io/js/k-mst-onaction.svg)](https://www.npmjs.com/package/k-mst-onaction)
-[![Size](http://img.badgesize.io/alakarteio/k-mst-onaction/master/index.js.svg)]()
+[![CircleCI](https://circleci.com/gh/unirakun/k-mst-onaction.svg?style=shield)](https://circleci.com/gh/unirakun/k-mst-onaction) [![Coverage Status](https://coveralls.io/repos/github/unirakun/k-mst-onaction/badge.svg?branch=master)](https://coveralls.io/github/unirakun/k-mst-onaction?branch=master) [![NPM Version](https://badge.fury.io/js/k-mst-onaction.svg)](https://www.npmjs.com/package/k-mst-onaction)
+[![Size](http://img.badgesize.io/unirakun/k-mst-onaction/master/index.js.svg)]()
 
 ## Contents
  - [Purpose](#purpose)
@@ -176,10 +176,10 @@ const dispatch = [
 addMiddleware(store, onAction(dispatch))
 ```
 
-# About ![alakarteio](http://alakarte.io/assets/img/logo.markdown.png)
-**alakarteio** is created by two passionate french developers.
+# About uni rakun
+**uni rakun** is created by two passionate french developers.
 
-Do you want to contact them ? Go to their [website](http://alakarte.io)
+Do you want to contact them ? Go to their [website](https://unirakun.fr)
 
 <table border="0">
  <tr>

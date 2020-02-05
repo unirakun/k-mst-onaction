@@ -2,7 +2,7 @@
   "name": "k-mst-onaction",
   "version": "0.11.0",
   "main": "index.js",
-  "repository": "git@github.com:alakarteio/k-mst-onaction.git",
+  "repository": "git@github.com:unirakun/k-mst-onaction.git",
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
   "license": "MIT",
   "scripts": {
